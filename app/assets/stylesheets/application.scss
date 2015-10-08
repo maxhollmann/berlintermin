@@ -14,13 +14,23 @@
  */
 
 @import "bootstrap-sprockets";
+@import "variables";
 @import "bootswatch/paper/variables";
 @import "bootstrap";
 //body { padding-top: 60px; }
 @import "bootswatch/paper/bootswatch";
 
-@import "npgroess-config";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "nprogress-config";
 @import "nprogress";
 @import "nprogress-bootstrap";
 
-//@import "base";
+@import 'jquery-ui/core';
+@import 'jquery-ui/theme';
+@import 'jquery-ui/datepicker';
+
+@import "base";
+@import "footer";
+@import "navbar";

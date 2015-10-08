@@ -20,4 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  quick_registrations:
+    create:
+      success_notice: "Welcome! Take a look around. You can set your password in the settings. Don't worry if you get signed out before, you can always request an email with a password reset link."
+
+  time:
+    formats:
+      day_and_month: "%B %d"
+      day_month_and_year: "%B %d, %Y"

@@ -1,4 +1,4 @@
 NProgress.configure
   showSpinner: false
-  ease: 'ease'
-  speed: 500
+  #ease: 'ease'
+  #speed: 500

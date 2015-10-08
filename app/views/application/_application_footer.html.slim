@@ -1,0 +1,13 @@
+#footer
+  .container
+    .row
+      .col-sm-3
+        h6 Meta
+        p= link_to "About", "https://www.maerketing.com/products/claimtask/", target: "_blank"
+        p= link_to "Terms of Service", tos_path
+        p= link_to "Privacy policy", privacy_path
+        p= link_to "Impressum", "https://www.maerketing.com/imprint/", target: "_blank"
+      .col-sm-3
+        h6 Contact
+        p= mail_to "info@claimtask.com", "Feedback", subject: "Feedback for Claimtask"
+        p= mail_to "info@claimtask.com", "Found a bug?", subject: "Bug in Claimtask"

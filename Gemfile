@@ -14,11 +14,16 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'passenger'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'nprogress-rails'
+
+gem 'jquery-ui-rails'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -27,12 +32,33 @@ gem 'slim-rails'
 gem 'devise'
 gem 'devise_invitable'
 gem 'simple_form'
+gem 'pundit'
 gem 'awesome_print'
+gem 'rollbar'
+gem 'request_store'
+gem 'sucker_punch'
+gem 'newrelic_rpm'
 
+gem 'sidekiq'
+#gem 'sidekiq-rollbar'
+# For sidekiq UI
+gem 'sinatra', :require => nil
+
+gem 'bootstrap-sass'
 gem 'bootswatch-rails'
+gem 'font-awesome-sass'
 
 
+gem 'postmark-rails'
+
+gem 'virtus'
 gem 'auto_strip_attributes'
+gem 'decent_exposure'
+gem 'friendly_id'
+gem 'memoist'
+#gem 'kaminari'
+#gem 'ransack'
+#gem 'refile'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  root to: "pages#home"
+
+  devise_for :users, controllers: {registrations: 'registrations'}
+  get "quick_sign_up" => "quick_registrations#create"
+
+  get 'tos' => "pages#tos", as: :tos
+  get 'privacy' => "pages#privacy", as: :privacy
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

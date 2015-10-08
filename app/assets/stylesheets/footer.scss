@@ -1,0 +1,11 @@
+#footer {
+    width: 100%;
+    margin-top: 30px;
+    padding: 70px 0;
+    background-color: $footer-bg-color;
+    color: $footer-color;
+
+    a {
+        color: inherit;
+    }
+}

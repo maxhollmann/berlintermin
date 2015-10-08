@@ -1,0 +1,40 @@
+body {
+    padding-top: 70px;
+}
+
+.button {
+    @extend .btn;
+}
+
+.button-primary {
+    @extend .button;
+    @extend .btn-primary;
+}
+
+button, input[type=submit] {
+    @extend .button-primary;
+}
+
+
+.h {
+    font-weight: 200;
+}
+
+.title {
+    border-bottom: solid 1px #dddddd;
+}
+
+@mixin fixed-left($width) {
+    float: left;
+    width: $width;
+    margin-right: -$width;
+}
+
+@mixin background-circle($diameter, $color) {
+    border-radius: $diameter / 2;
+    background: $color;
+    width: $diameter;
+    height: $diameter;
+    line-height: $diameter;
+    text-align: center;
+}

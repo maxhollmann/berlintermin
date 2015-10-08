@@ -1,0 +1,8 @@
+---
+:concurrency: 15
+:queues:
+  - highest
+  - high
+  - default
+  - low
+  - lowest
