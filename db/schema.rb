@@ -11,9 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008144258) do
+ActiveRecord::Schema.define(version: 20151113135010) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
+
+  create_table "appointment_requests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name",         null: false
+    t.string   "email",        null: false
+    t.string   "phone",        null: false
+    t.string   "location",     null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "max_distance"
+    t.datetime "deadline"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "appointment_requests", ["user_id"], name: "index_appointment_requests_on_user_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

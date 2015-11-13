@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  root to: "pages#home"
+  root to: "appointment_requests#index"
 
   devise_for :users, controllers: {registrations: 'registrations'}
-  get "quick_sign_up" => "quick_registrations#create"
+  #get "quick_sign_up" => "quick_registrations#create"
+
+  resources :appointment_requests
 
   get 'tos' => "pages#tos", as: :tos
   get 'privacy' => "pages#privacy", as: :privacy

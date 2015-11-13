@@ -1,0 +1,18 @@
+table.table
+  tr
+    th Name
+    th Email
+    th Phone
+    th Location
+    th Deadline
+    th Actions
+  - appointment_requests.each do |req|
+    tr
+      td= req.name
+      td= req.email
+      td= req.phone
+      td= req.location
+      td= req.deadline
+      td
+        => link_to "edit", [:edit, req]
+        = link_to "delete", req, method: :delete

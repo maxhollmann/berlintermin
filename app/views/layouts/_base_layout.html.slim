@@ -23,6 +23,7 @@ body
         ul.nav.navbar-nav.navbar-left
           - if user_signed_in?
             li= link_to "Home", root_path
+            li= link_to "Request appointment", new_appointment_request_path
 
         ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
