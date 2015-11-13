@@ -6,6 +6,7 @@ class AppointmentRequestsController < ApplicationController
 
   def create
     if appointment_request.save
+      CheckForSlotsJob.perform_later
       redirect_to appointment_requests_path, notice: "Request created!"
     else
       render action: :new
