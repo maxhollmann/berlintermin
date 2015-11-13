@@ -58,7 +58,6 @@ gem 'friendly_id'
 gem 'memoist'
 gem 'geocoder'
 
-gem 'watir-rails'
 gem 'capybara'
 gem 'capybara-selenium'
 gem 'capybara-screenshot'
