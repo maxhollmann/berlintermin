@@ -49,7 +49,7 @@ class Bot
   end
 
   def goto_first_free_time(retries = 2)
-    time = first("th.buchbar")
+    time = first("th.buchbar > a, td.frei > a")
 
     logger.info "Found time: #{time.present?}"
 
@@ -60,14 +60,14 @@ class Bot
     raise NoFreeSlot, "couldn't click on time" unless time.click
 
   rescue NoFreeSlot
-    binding.pry
-
     if retries > 0
       logger.info "Retrying going to time"
       retries -= 1
       sleep 1
       retry
     else
+      binding.pry if Rails.env.development?
+
       raise
     end
   end
