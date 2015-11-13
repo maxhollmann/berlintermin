@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: "appointment_requests#index"
 
@@ -8,6 +10,9 @@ Rails.application.routes.draw do
 
   get 'tos' => "pages#tos", as: :tos
   get 'privacy' => "pages#privacy", as: :privacy
+
+  # TODO authorize https://github.com/mperham/sidekiq/wiki/Monitoring
+  mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
