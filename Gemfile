@@ -63,6 +63,7 @@ gem 'capybara'
 gem 'capybara-selenium'
 gem 'capybara-screenshot'
 gem 'poltergeist'
+gem 'site_prism'
 
 #gem 'kaminari'
 #gem 'ransack'

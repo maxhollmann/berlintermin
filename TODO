@@ -1,1 +1,9 @@
 [ ] Support for Top Dienstleistungen on this page: https://service.berlin.de/terminvereinbarung/
+
+15 seconds break:
+429 after 95 requests in 16min
+=> 356/hour
+
+30 seconds break:
+429 after 69 requests in 19.5min
+=> 212/hour
