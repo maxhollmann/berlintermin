@@ -1,4 +1,6 @@
 class AppointmentRequestsController < ApplicationController
+  before_action :authenticate_user!
+
   expose(:appointment_requests) { current_user.appointment_requests }
   expose(:appointment_request, attributes: :appointment_request_params)
 

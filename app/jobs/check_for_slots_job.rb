@@ -22,6 +22,8 @@ class Bot
 
     visit day_selection_path
 
+    months_ahead = 0
+
     begin
       day = first("td.buchbar")
       logger.info "Found a free day: #{day.present?}"
@@ -31,10 +33,10 @@ class Bot
       logger.info "Going to day"
       raise NoFreeSlot, "couldn't click on day" unless day.click
     rescue NoFreeSlot
-
-      if first("td.nichtbuchbar").present?
-        logger.info "Trying next month"
+      if months_ahead < 1 && first("td.nichtbuchbar").present?
+        logger.info "Trying next month (#{months_ahead + 1} ahead)"
         find("a", text: "nächsten Monat").click
+        months_ahead += 1
         retry
       else
         logger.info "No more months to try"
@@ -119,8 +121,8 @@ class CheckForSlotsJob < ActiveJob::Base
     Rails.logger.info bot.status_code
 
     if bot.status_code == 429
-      Rails.logger.info "Got 429 calm down, retrying in 60 seconds"
-      sleep 60
+      Rails.logger.info "Got 429 calm down, retrying in 3 minutes"
+      sleep 60*3
     else
       Rails.logger.info "No free slot, retrying in 10 seconds"
       sleep 10
