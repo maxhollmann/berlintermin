@@ -138,7 +138,7 @@ class CheckForSlotsJob < ActiveJob::Base
 
   rescue Page::WrongPage => e
     if p.status_code == 429
-      logger.info "Got 429! Retrying in 60 seconds"
+      logger.warn "Got 429! Retrying in 60 seconds"
       sleep 60; retry
     else
       logger.error "Not on right page (#{e}), status: #{p.status_code}, page: #{p.save_page}, screenshot: #{p.save_screenshot}"
