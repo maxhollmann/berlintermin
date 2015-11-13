@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113135010) do
+ActiveRecord::Schema.define(version: 20151113151750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,16 +19,19 @@ ActiveRecord::Schema.define(version: 20151113135010) do
 
   create_table "appointment_requests", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",         null: false
-    t.string   "email",        null: false
-    t.string   "phone",        null: false
-    t.string   "location",     null: false
+    t.string   "name",                          null: false
+    t.string   "email",                         null: false
+    t.string   "phone",                         null: false
+    t.string   "location",                      null: false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "max_distance"
     t.datetime "deadline"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.datetime "appointment_made_at"
+    t.string   "appointment_number"
+    t.string   "appointment_cancellation_code"
   end
 
   add_index "appointment_requests", ["user_id"], name: "index_appointment_requests_on_user_id", using: :btree

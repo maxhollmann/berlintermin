@@ -64,9 +64,24 @@ GEM
     bullet (4.14.7)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
+    capybara (2.5.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara-screenshot (1.0.11)
+      capybara (>= 1.0, < 3)
+      launchy
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    childprocess (0.5.8)
+      ffi (~> 1.0, >= 1.0.11)
     choice (0.2.0)
+    cliver (0.3.2)
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -77,6 +92,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    commonwatir (4.0.0)
     connection_pool (2.2.0)
     database_cleaner (1.5.0)
     debug_inspector (0.0.2)
@@ -97,6 +113,7 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.6.0)
+    ffi (1.9.10)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
     friendly_id (5.1.0)
@@ -141,6 +158,11 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.3)
+    poltergeist (1.8.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     postmark (1.7.0)
       json
       rake
@@ -224,6 +246,7 @@ GEM
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
     ruby-graphviz (1.2.2)
+    rubyzip (1.1.7)
     sass (3.4.18)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -234,6 +257,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (2.48.1)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
@@ -293,6 +321,21 @@ GEM
       equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.3)
       rack (>= 1.0)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
+    watir-rails (1.1.0)
+      rack
+      rails
+      watir (~> 5.0)
+    watir-webdriver (0.9.1)
+      selenium-webdriver (>= 2.46.2)
+    websocket (1.2.2)
+    websocket-driver (0.6.3)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -305,6 +348,9 @@ DEPENDENCIES
   bootstrap-sass
   bootswatch-rails
   bullet
+  capybara
+  capybara-screenshot
+  capybara-selenium
   coffee-rails (~> 4.1.0)
   database_cleaner
   decent_exposure
@@ -323,6 +369,7 @@ DEPENDENCIES
   nprogress-rails
   passenger
   pg
+  poltergeist
   postmark-rails
   pry-rails
   pundit
@@ -345,6 +392,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   virtus
+  watir-rails
 
 BUNDLED WITH
    1.10.6

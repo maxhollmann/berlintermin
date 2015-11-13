@@ -6,6 +6,8 @@ class AppointmentRequest < ActiveRecord::Base
   geocoded_by :location_in_berlin
   after_validation :geocode
 
+  scope :outstanding, -> { where(appointment_made_at: nil) }
+
   def location_in_berlin
     location + ", Berlin, Germany"
   end

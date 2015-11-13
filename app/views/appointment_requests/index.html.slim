@@ -3,16 +3,22 @@ table.table
     th Name
     th Email
     th Phone
-    th Location
-    th Deadline
+    /th Location
+    /th Deadline
+    th Appointment made
+    th Number
+    th Cancellation code
     th Actions
   - appointment_requests.each do |req|
     tr
       td= req.name
       td= req.email
       td= req.phone
-      td= req.location
-      td= req.deadline
+      /td= req.location
+      /td= req.deadline
+      td= req.appointment_made_at ? l(req.appointment_made_at, format: :short) : "no"
+      td= req.appointment_number
+      td= req.appointment_cancellation_code
       td
         => link_to "edit", [:edit, req]
         = link_to "delete", req, method: :delete

@@ -57,6 +57,13 @@ gem 'decent_exposure'
 gem 'friendly_id'
 gem 'memoist'
 gem 'geocoder'
+
+gem 'watir-rails'
+gem 'capybara'
+gem 'capybara-selenium'
+gem 'capybara-screenshot'
+gem 'poltergeist'
+
 #gem 'kaminari'
 #gem 'ransack'
 #gem 'refile'
@@ -71,15 +78,14 @@ gem 'geocoder'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+
   gem 'quiet_assets'
 
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda'
-  # gem 'capybara'
-  # gem 'capybara-webkit'
-  # gem 'capybara-selenium'
-  # gem 'capybara-screenshot'
   # gem 'timecop'
   # gem 'factory_girl_rails'
   gem 'database_cleaner'
@@ -96,8 +102,6 @@ group :development, :test do
   gem 'gem_reloader'
 end
 
-group :development do
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+group :production do
   gem 'rails_12factor'
 end
