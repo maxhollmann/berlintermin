@@ -44,5 +44,7 @@ module Claimtask # GETSTARTED change module name
     # config.assets.precompile += %w(
     #   embeddable.js
     # )
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

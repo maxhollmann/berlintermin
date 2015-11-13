@@ -3,13 +3,10 @@
 class Bot
   class NoFreeSlot < StandardError; end
 
-  attr_reader :logger
-
   include Capybara::DSL
 
-  def initialize(concern_id = 326541, logger = Rails.logger)
+  def initialize(concern_id = 326541)
     @concern_id = concern_id
-    @logger = logger
   end
 
   def wait(min = 1, max = 5)
