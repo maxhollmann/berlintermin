@@ -75,9 +75,9 @@ class Bot
   def submit_form(request)
     logger.info "Filling in and submitting form for #{request.name} #{request.email}"
 
-    fill_in "Nachname", with: request.name
-    fill_in "EMail", with: request.email
-    fill_in "telefonnummer_fuer_rueckfragen", with: request.phone
+    fill_in "Nachname", with: request.name                        if has_css?("#Nachname")
+    fill_in "EMail", with: request.email                          if has_css?("#EMail")
+    fill_in "telefonnummer_fuer_rueckfragen", with: request.phone if has_css?("#telefonnummer_fuer_rueckfragen")
     check "agbbestaetigung"
     accept_confirm do
       first("#sendbutton").click
