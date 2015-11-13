@@ -6,7 +6,9 @@ class AppointmentRequest < ActiveRecord::Base
   geocoded_by :location_in_berlin
   after_validation :geocode
 
-  scope :outstanding, -> { where(appointment_made_at: nil) }
+  default_scope             ->       { order(created_at: :asc) }
+  scope :outstanding,       ->       { where(appointment_made_at: nil) }
+  scope :matching_deadline, ->(date) { where("deadline >= ?", date.beginning_of_day) }
 
   def location_in_berlin
     location + ", Berlin, Germany"

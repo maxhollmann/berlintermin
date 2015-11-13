@@ -9,7 +9,6 @@ class CheckForSlotsJob < ActiveJob::Base
     goto_date_selection
     goto_first_bookable_day
     goto_first_free_time_slot
-    find_request
     submit_booking
     update_request
 
@@ -67,13 +66,15 @@ class CheckForSlotsJob < ActiveJob::Base
   end
 
   def find_request
-    @request = AppointmentRequest.outstanding.first
+    @request = AppointmentRequest.outstanding.matching_deadline(@p.date).first
     raise NoMatchingRequest unless @request
   end
 
   def submit_booking
     @p = BookingPage.new
     @p.verify_page!
+
+    find_request
 
     logger.info "Submitting form for #{@request.email}"
 
@@ -141,11 +142,19 @@ class CheckForSlotsJob < ActiveJob::Base
   end
 
   class BookingPage < Page
+    MONTHNAMES = [nil, "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
+
     element :name_field,    "#Nachname"
     element :email_field,   "#EMail"
     element :phone_field,   "#telefonnummer_fuer_rueckfragen"
     element :tos_checkbox,  "#agbbestaetigung"
     element :submit_button, "#sendbutton"
+
+    def date
+      text.match(/(\d{2})\.\s+(\w+)\s+(\d{4})/) do |m|
+        return Date.new(m[3].to_i, MONTHNAMES.index(m[2]), m[1].to_i)
+      end
+    end
 
     def submit_form(request)
       name_field.set  request.name  if has_name_field?
