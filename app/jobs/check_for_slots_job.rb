@@ -24,8 +24,6 @@ class DateSelectionPage < Page
     return true if has_bookable_days?
 
     if has_unbookable_days? && tries > 0
-      logger.info "No bookable days, trying next month (#{tries} tries left)"
-
       next_month_link.click
       verify_page!
       skip_to_month_with_bookable_day(tries - 1)
