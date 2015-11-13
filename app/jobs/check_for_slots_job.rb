@@ -12,6 +12,10 @@ class Bot
     @logger = logger
   end
 
+  def wait(min = 1, max = 5)
+    sleep min + rand * (max - min)
+  end
+
   def day_selection_path
     "https://service.berlin.de/terminvereinbarung/termin/tag.php?termin=1&dienstleister[]=122210&dienstleister[]=122217&dienstleister[]=122219&dienstleister[]=122227&dienstleister[]=122231&dienstleister[]=122238&dienstleister[]=122243&dienstleister[]=122252&dienstleister[]=122260&dienstleister[]=122262&dienstleister[]=122254&dienstleister[]=122271&dienstleister[]=122273&dienstleister[]=122277&dienstleister[]=122280&dienstleister[]=122282&dienstleister[]=122284&dienstleister[]=122291&dienstleister[]=122285&dienstleister[]=122286&dienstleister[]=122296&dienstleister[]=150230&dienstleister[]=122301&dienstleister[]=122297&dienstleister[]=122294&dienstleister[]=122312&dienstleister[]=122314&dienstleister[]=122304&dienstleister[]=122311&dienstleister[]=122309&dienstleister[]=317869&dienstleister[]=324433&dienstleister[]=325341&dienstleister[]=324434&dienstleister[]=324435&dienstleister[]=122281&dienstleister[]=324414&dienstleister[]=122283&dienstleister[]=122279&dienstleister[]=122276&dienstleister[]=122274&dienstleister[]=122267&dienstleister[]=122246&dienstleister[]=122251&dienstleister[]=122257&dienstleister[]=122208&dienstleister[]=122226&anliegen[]=120686&herkunft=%2Fterminvereinbarung%2F"
     #"https://service.berlin.de/terminvereinbarung/termin/tag.php?termin=1&dienstleister=326541&anliegen[]=121921&herkunft=1"
@@ -31,10 +35,12 @@ class Bot
       raise NoFreeSlot, "no free day found" unless day
 
       logger.info "Going to day"
+      wait(0.5, 2)
       raise NoFreeSlot, "couldn't click on day" unless day.click
     rescue NoFreeSlot
       if months_ahead < 1 && first("td.nichtbuchbar").present?
         logger.info "Trying next month (#{months_ahead + 1} ahead)"
+        wait
         find("a", text: "nächsten Monat").click
         months_ahead += 1
         retry
@@ -53,6 +59,7 @@ class Bot
     raise NoFreeSlot, "no free time found" unless time
 
     logger.info "Going to time"
+    wait(0.5, 2)
     raise NoFreeSlot, "couldn't click on time" unless time.click
 
   rescue NoFreeSlot
