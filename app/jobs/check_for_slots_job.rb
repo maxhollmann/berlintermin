@@ -124,8 +124,8 @@ class CheckForSlotsJob < ActiveJob::Base
       Rails.logger.info "Got 429 calm down, retrying in 3 minutes"
       sleep 60*3
     else
-      Rails.logger.info "No free slot, retrying in 10 seconds"
-      sleep 10
+      Rails.logger.info "No free slot, retrying in 30 seconds"
+      sleep 30
     end
 
     retry
