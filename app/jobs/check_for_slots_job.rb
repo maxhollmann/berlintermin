@@ -66,6 +66,8 @@ class CheckForSlotsJob < ActiveJob::Base
   end
 
   def find_request
+    logger.info "Time slot is on #{@p.date}"
+
     @request = AppointmentRequest.outstanding.matching_deadline(@p.date).first
     raise NoMatchingRequest unless @request
   end
@@ -152,6 +154,7 @@ class CheckForSlotsJob < ActiveJob::Base
 
     def date
       text.match(/(\d{2})\.\s+(\w+)\s+(\d{4})/) do |m|
+        Rails.logger.info "Extracting date from #{m[0]}"
         return Date.new(m[3].to_i, MONTHNAMES.index(m[2]), m[1].to_i)
       end
     end

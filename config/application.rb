@@ -36,6 +36,7 @@ module Berlintermin
     config.autoload_paths << Rails.root.join('app', 'forms')
     config.autoload_paths << Rails.root.join('app', 'services')
     config.autoload_paths << Rails.root.join('app', 'jobs')
+    config.autoload_paths << Rails.root.join('app', 'pages')
 
     config.assets.initialize_on_precompile = false
 
